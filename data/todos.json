@@ -3,11 +3,6 @@
     {
       "id": "4",
       "title": "go to market",
-      "completed": true
-    },
-    {
-      "id": "5",
-      "title": "learn math",
       "completed": false
     },
     {
@@ -23,7 +18,7 @@
     {
       "id": "5584c65f-935f-4ddd-b314-49f5ec9c1937",
       "title": "aller à la salle de sport",
-      "completed": false
+      "completed": true
     }
   ]
 }

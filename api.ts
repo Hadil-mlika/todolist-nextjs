@@ -41,6 +41,8 @@ export const deleteTodo = async (todo:ITask):Promise<void>=>{
 
 
 export const check = async (todo:ITask):Promise<void>=>{
+
+  
   const res =await fetch(`${baseUrl}/tasks/${todo.id}`, {
      method:'PUT',
      headers:{
@@ -48,8 +50,10 @@ export const check = async (todo:ITask):Promise<void>=>{
     },
     body:JSON.stringify(todo)
   })
-  const editTodo=res.json()
-  return editTodo
+  console.log("hhhhhhhhhhhhhhhhhhhhhhhh")
+  console.log(todo)
+  const checkTodo=res.json()
+  return checkTodo
   
    
  

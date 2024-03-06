@@ -5,7 +5,7 @@ import { CiEdit } from "react-icons/ci";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Modal from './Modal';
 import { useRouter } from 'next/navigation';
-import { deleteTodo, editTodo } from '@/api';
+import { check, deleteTodo, editTodo } from '@/api';
 
 import { IoIosCheckboxOutline } from "react-icons/io";
 
@@ -24,6 +24,8 @@ const Task: React.FC<TaskProps> = ({ mytask }) => {
   const [openModelDelete, setOpenModelDelete] = useState(false);
   const [titleToEdit, setTitleToEdit] = useState(mytask.title)
 
+  const [myTask, setMyTask] = useState(false)
+
 
 
   const handleEditNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -33,14 +35,14 @@ const Task: React.FC<TaskProps> = ({ mytask }) => {
       title: titleToEdit,
       completed: false
     })
-    console.log(titleToEdit)
+
     setTitleToEdit("")
     setOpenModelEdit(false);
     router.refresh();
   }
 
 
-  console.log(mytask)
+
 
 
   const handleDeleteNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -53,6 +55,23 @@ const Task: React.FC<TaskProps> = ({ mytask }) => {
 
 
     setOpenModelEdit(false);
+    router.refresh();
+  }
+
+
+
+  const handlecheck = async (e: any) => {
+    e.preventDefault();
+    await check({
+      id: mytask.id,
+      title: mytask.title,
+      completed: (mytask.completed ?false :true)
+    })
+
+
+
+
+
     router.refresh();
   }
 
@@ -117,8 +136,15 @@ const Task: React.FC<TaskProps> = ({ mytask }) => {
 
         </Modal>
 
-        <IoIosCheckboxOutline  cursor="pointer" size={25} className='text-green-500' />
-        <IoIosCheckboxOutline  cursor="pointer" size={25} className='text-red-500' />
+        <input
+          type="checkbox"
+          className='checkbox'
+          id={mytask.id}
+          checked={mytask.completed}
+          onChange={handlecheck}
+        />
+
+
 
 
 
