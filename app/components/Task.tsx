@@ -8,6 +8,9 @@ import { useRouter } from 'next/navigation';
 import { check, deleteTodo, editTodo } from '@/api';
 
 import { IoIosCheckboxOutline } from "react-icons/io";
+import { useDispatch } from 'react-redux';
+import { modifTask} from "@/redux/features/taskSlice";
+
 
 interface TaskProps {
   mytask: ITask
@@ -17,7 +20,7 @@ interface TaskProps {
 const Task: React.FC<TaskProps> = ({ mytask }) => {
 
 
-
+  const dispatch = useDispatch()
 
   const router = useRouter();
   const [openModelEdit, setOpenModelEdit] = useState(false);
@@ -30,11 +33,15 @@ const Task: React.FC<TaskProps> = ({ mytask }) => {
 
   const handleEditNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    await editTodo({
-      id: mytask.id,
-      title: titleToEdit,
-      completed: false
-    })
+    if (titleToEdit) {
+      dispatch(modifTask({
+        id: mytask.id,
+        title: titleToEdit,
+      
+      }))
+
+    }
+
 
     setTitleToEdit("")
     setOpenModelEdit(false);
@@ -65,7 +72,7 @@ const Task: React.FC<TaskProps> = ({ mytask }) => {
     await check({
       id: mytask.id,
       title: mytask.title,
-      completed: (mytask.completed ?false :true)
+      completed: (mytask.completed ? false : true)
     })
 
 
@@ -84,7 +91,7 @@ const Task: React.FC<TaskProps> = ({ mytask }) => {
 
       <td>{mytask.id}</td>
       <td>{mytask.title}</td>
-      <td className='w-full'>{mytask.completed ? 'true' : 'false'}</td>
+      <td className='w-full'>{mytask.completed ? 'checked' : 'not checked'}</td>
       <td className='flex gap-5'>
         <CiEdit cursor="pointer" onClick={() => setOpenModelEdit(true)} className='text-blue-500'
           size={25} />

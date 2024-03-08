@@ -1,24 +1,39 @@
 {
   "tasks": [
     {
-      "id": "4",
-      "title": "go to market",
-      "completed": false
-    },
-    {
-      "id": "5",
-      "title": "go to gym",
-      "completed": false
-    },
-    {
-      "id": "8",
-      "title": "faire marche",
-      "completed": false
-    },
-    {
-      "id": "5584c65f-935f-4ddd-b314-49f5ec9c1937",
-      "title": "aller à la salle de sport",
+      "id": "67a53059-bfbf-4f39-820f-e18d09810ae6",
+      "title": "go to the market ",
       "completed": true
+    },
+    {
+      "id": "798fd889-4481-4221-a80b-f13b22ffd509",
+      "title": "go to the gym",
+      "completed": true
+    },
+    {
+      "id": "b99137ca-4229-412d-a42c-4f9b27b42ed2",
+      "title": "prepare my coffee",
+      "completed": false
+    },
+    {
+      "id": "1ff4ffd8-1260-4ec1-9a88-b9342b5594aa",
+      "title": "visit my friends",
+      "completed": false
+    },
+    {
+      "id": "85f4dcb6-fa02-4ee4-96ac-9827b9e4a820",
+      "title": "cook my lunch",
+      "completed": false
+    },
+    {
+      "id": "96473c1e-5b7b-4d19-904e-d9ca234633f3",
+      "title": "call my sister",
+      "completed": false
+    },
+    {
+      "id": "a57d7019-b478-486d-85fe-427bcefd7278",
+      "title": "call my mother",
+      "completed": false
     }
   ]
 }

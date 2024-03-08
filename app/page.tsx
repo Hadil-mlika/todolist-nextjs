@@ -2,12 +2,16 @@
 import AddTask from "./components/AddTask";
 import ToDoList from "./components/ToDoList";
 import { getAllTodos } from "../api";
+import Pagination from "./components/Pagination";
+
 
 
 
 
 export default async function Home() {
   const tasks = await getAllTodos();
+
+
   console.log(tasks)
 
   return (
@@ -18,6 +22,8 @@ export default async function Home() {
       </div>
 
       <ToDoList tasks={tasks} />
+
+
 
     </main>
   );

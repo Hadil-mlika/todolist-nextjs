@@ -6,10 +6,12 @@ import { addTodo } from '@/api';
 import { useRouter } from 'next/navigation';
 
 import { v4 as uuidv4 } from 'uuid';
-
+import { saveTodo } from '@/redux/features/taskSlice';
+import { useDispatch } from 'react-redux';
+import { taskSlice } from "@/redux/features/taskSlice";
 
 const AddTask = () => {
-
+    const dispatch = useDispatch()
     const router = useRouter()
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [newTaskValue, setNewTaskValue] = useState<string>("")
@@ -17,16 +19,34 @@ const AddTask = () => {
 
     const handleSubmitNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
-        await addTodo({
-            id: uuidv4(),
-            title: newTaskValue,
-            completed: false
-        })
+        if (newTaskValue){
+
+
+            dispatch(saveTodo({
+                id: uuidv4(),
+                title: newTaskValue,
+                completed: false
+            }))
+
+
+
+        }
+   
+
+
         console.log(newTaskValue)
         setNewTaskValue("")
         setModalOpen(false);
         router.refresh();
     }
+
+
+
+
+
+
+
+    
 
     return (
         <div>
